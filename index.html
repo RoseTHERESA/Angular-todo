@@ -11,14 +11,17 @@
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2">
 					<!-- Create your form below, try adding some angular validations -->
-					<form>
+					<form action='#' name='todoForm' novalidate>
+						<label for="addTodo">Add a TODO</label>
+						<input type="text" id="addTodo" ng-model="data.addTodo">
 					</form>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2">
 					<!-- List your todos here, use some css to hide the bullet points -->
-					<ul> 
+					<ul>
+						<li ng-repeate="todo in todos">{{todo}}</li>
 					</ul>
 				</div>
 			</div>
