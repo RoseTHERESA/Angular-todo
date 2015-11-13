@@ -1,19 +1,20 @@
 <!DOCTYPE html>
-<html ng-app="todoapp" lang="en">
+<html ng-app="todoApp" lang="en">
 	<head>
 		<meta charset="UTF-8">
 		<title>Angular To Do App</title>
 		<!-- Latest compiled and minified CSS for bootstrap -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	</head>
-	<body ng-controller="TodosController" >
+	<body ng-controller="TodosController" ng-cloak>
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2">
 					<!-- Create your form below, try adding some angular validations -->
+					<h3>To Do</h3>
 					<form action='#' name='todoForm'  ng-submit="addTodo(todo)" novalidate>
-						<label for="addTodo">ITEM</label>
-						<input type="text" id="addTodo" ng-model="data.addTodo" ng-required="true">
+						<label for="item">ITEM</label>
+						<input type="text" name="item" id="addTodo" ng-model="todo.item" ng-required="true" id="item">
 						<p ng-show="!todoForm.$pristine && todoForm.$invalid">Enter an Item</p>
 						<input type="submit" ng-disabled="todoForm.$invalid">
 					</form>
@@ -23,8 +24,9 @@
 				<div class="col-md-8 col-md-offset-2">
 					<!-- List your todos here, use some css to hide the bullet points -->
 					<ul>
-						<li ng-repeat="todo in todos track by $index">{{data.todo}}</li>
+						<li ng-repeat="todo in todos track by $index">{{todo.item}}</li>
 					</ul>
+					<button ng-click="deleteAll()">Clear</button>
 				</div>
 			</div>
 		</div>
